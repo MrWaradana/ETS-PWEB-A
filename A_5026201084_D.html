@@ -29,37 +29,60 @@
                 <p class="m-0"><strong> Ridho </strong></p>
                 <p class="m-0"><strong> 5026201084 </strong> </p>
             </div>
-            <form action="https://getbootstrap.com/docs/4.6/components/forms/" class="px-sm-1 pb-sm-1 ">
+            <form action="https://getbootstrap.com/docs/4.6/components/forms/" class="needs-validation px-sm-1 pb-sm-1" novalidate>
                 <h1 class="form-title text-center my-4">
                     Form Input Peserta Vaksinasi
                 </h1>
                 <div class="form-group row">
                   <label for="nama" class="col-md-3 col-form-label"><strong> Nama Peserta :</strong></label>
                   <div class="col-md-9">
-                      <input type="text" class="form-control" id="nama" placeholder="Tulis nama lengkapmu di sini.." required minlength="10" pattern="[a-zA-z][a-zA-z\s]*" title="Gunakan huruf saja!">
+                      <input type="text" class="form-control" id="nama" placeholder="Tulis nama lengkapmu di sini.." required minlength="10" pattern="[a-zA-z][a-zA-z\s]*">
+                      <div class="valid-feedback">
+                        Sudah benar!
+                      </div>
+                      <div class="invalid-feedback">
+                        Mohon masukkan namamu menggunakan huruf!
+                      </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="nik" class="col-md-3 col-form-label"><strong> NIK : </strong></label>
                   <div class="col-md-9">
-                      <input type="text" class="form-control" id="nik" placeholder="Tulis NIK-mu di sini" required pattern="[0-9]{16}">
+                      <input type="text" class="form-control" id="nik" placeholder="Tulis NIK-mu di sini" required pattern="[0-9]*" minlength="16" maxlength="16">
+                      <div class="valid-feedback">
+                        Sudah benar!
+                      </div>
+                      <div class="invalid-feedback">
+                        Mohon masukkan 16 angka NIK!
+                      </div>
                   </div>
                 </div>
                 <div class="form-group row">
                   <label for="vaksin" class="col-md-3 col-form-label"><strong> Jenis Vaksin :</strong></label>
                   <div class="col-md-9">
-                      <select class="form-control" id="vaksin" required>
+                      <select class="custom-select form-control" id="vaksin" required>
                         <option value="" selected>Pilih jenis vaksin...</option>
                         <option value="AZ">AZ</option>
                         <option value="Sinovac">Sinovac</option>
                         <option value="Moderna">Moderna</option>
                       </select>
+                      <div class="valid-feedback">
+                        Sudah benar!
+                      </div>
+                      <div class="invalid-feedback">
+                        Mohon pilih salah satu opsi vaksin!
+                      </div>
                   </div>
                 </div>
                 <div class="form-group row">
                     <label for="batch" class="col-md-3 col-form-label"><strong> No. Batch :</strong></label>
                     <div class="col-md-9">
-                        <input type="text" class="form-control" id="batch" placeholder="Tulis nomor batch kamu di sini" required pattern="[a-zA-Z0-9]*">
+                        <input type="text" class="form-control" id="batch" placeholder="Tulis nomor batch kamu di sini.." required pattern="[a-zA-Z0-9]*">
+                        <div class="valid-feedback">
+                          </div>
+                          <div class="invalid-feedback">
+                            Mohon masukkan kombinasi angka dan huruf dari No. Batch anda!
+                          </div>
                     </div>
                 </div>
                 <div class="row my-5">
@@ -74,6 +97,24 @@
     </div>
 
 
+    <!-- script -->
+    <script>
+        (function() {
+          'use strict';
+          window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('needs-validation');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+              form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                  event.preventDefault();
+                  event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+              }, false);
+            });
+          }, false);
+        })();
+    </script>
 
 </body>
 </html>
